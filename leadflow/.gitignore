@@ -19,8 +19,8 @@ ENV/
 .venv/
 
 # Environment / secrets
-.env
-*.env.local
+# .env
+# *.env.local
 
 # IDE
 .idea/
@@ -39,8 +39,7 @@ mongodb-data/
 uploads/
 
 # Model cache
-models/
-.cache/
+models/.cache/
 
 # PyInstaller
 *.spec
