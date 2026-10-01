@@ -19,8 +19,11 @@ ENV/
 .venv/
 
 # Environment / secrets
-# .env
-# *.env.local
+.env
+*.env.local
+
+leadflow/.env
+leadflow/*.env.local
 
 # IDE
 .idea/

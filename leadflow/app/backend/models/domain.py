@@ -239,6 +239,35 @@ class CallAnalysis(BaseModel):
     recommended_action: str
     confidence: float = Field(..., ge=0.0, le=1.0)
 
+    @field_validator("priority", mode="before")
+    @classmethod
+    def validate_priority_before(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            v_lower = v.strip().lower()
+            if v_lower in ("low", "medium", "high"):
+                return LeadPriority(v_lower)
+        return v
+
+    @field_validator("intent", mode="before")
+    @classmethod
+    def validate_intent_before(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            v_upper = v.strip().upper()
+            for item in CallIntent:
+                if item.value == v_upper:
+                    return item
+        return v
+
+    @field_validator("sentiment", mode="before")
+    @classmethod
+    def validate_sentiment_before(cls, v: Any) -> Any:
+        if isinstance(v, str):
+            v_upper = v.strip().upper()
+            for item in CallSentiment:
+                if item.value == v_upper:
+                    return item
+        return v
+
     @field_validator("lead_score")
     @classmethod
     def validate_lead_score(cls, v: int) -> int:

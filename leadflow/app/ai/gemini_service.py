@@ -96,12 +96,19 @@ class GeminiService:
         """Generate and parse JSON response from Gemini."""
         raw = self.generate(prompt, system_instruction, max_retries)
 
-        # Strip markdown fences if present
         text = raw.strip()
-        if text.startswith("```"):
-            lines = text.split("\n")
-            lines = [l for l in lines if not l.startswith("```")]
-            text = "\n".join(lines).strip()
+        import re
+
+        # Match markdown block ```json ... ``` or ``` ... ```
+        fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text)
+        if fence_match:
+            text = fence_match.group(1).strip()
+        else:
+            # Extract JSON object starting with { and ending with }
+            start = text.find("{")
+            end = text.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                text = text[start:end + 1].strip()
 
         try:
             return json.loads(text)

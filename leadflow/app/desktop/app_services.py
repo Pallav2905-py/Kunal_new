@@ -117,4 +117,3 @@ class AppServices:
 
     def can_view_analytics(self) -> bool:
         return self.current_role in (UserRole.ADMIN, UserRole.SALES_MANAGER)
-AQ.Ab8RN6I-JWAvasnb5wPyblcNn8GlJ_tnFl5-kQ7CC5m5_GyhVAAQ.Ab8RN6I-JWAvasnb5wPyblcNn8GlJ_tnFl5-kQ7CC5m5_GyhVAAQ.Ab8RN6I-JWAvasnb5wPyblcNn8GlJ_tnFl5-kQ7CC5m5_GyhVAAQ.Ab8RN6I-JWAvasnb5wPyblcNn8GlJ_tnFl5-kQ7CC5m5_GyhVAAQ.Ab8RN6I-JWAvasnb5wPyblcNn8GlJ_tnFl5-kQ7CC5m5_GyhVA

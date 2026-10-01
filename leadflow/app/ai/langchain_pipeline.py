@@ -142,11 +142,11 @@ class AnalysisPipeline:
                 # Enforce priority matches score
                 score = int(raw.get("lead_score", 0))
                 if score < 40:
-                    raw["priority"] = "LOW"
+                    raw["priority"] = "low"
                 elif score < 70:
-                    raw["priority"] = "MEDIUM"
+                    raw["priority"] = "medium"
                 else:
-                    raw["priority"] = "HIGH"
+                    raw["priority"] = "high"
 
                 analysis = CallAnalysis(**raw)
                 return analysis
